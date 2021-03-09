@@ -1,0 +1,22 @@
+---
+# tasks file for actifio_agent
+
+- name: install iscsi-tools
+  yum:
+    name: iscsi-initiator-utils
+    state: present
+
+- name: install patch (needed for linux cbt) 
+  yum: 
+    name: patch
+    state: present
+
+- name: Download rpm
+  get_url:
+    url: https://storage.googleapis.com/binaries2/connector-Linux-latestversion.rpm
+    dest: /tmp/
+        
+- name: install the connector
+  yum: 
+    name: /tmp/connector-Linux-latestversion.rpm
+    state: present

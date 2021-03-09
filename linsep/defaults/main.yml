@@ -1,0 +1,3 @@
+---
+# defaults file for linsep
+package_state: "present"

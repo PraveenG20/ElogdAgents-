@@ -1,0 +1,17 @@
+---
+# tasks file for linsep
+- name: Download the file
+  get_url:
+    url: https://storage.googleapis.com/binaries2/LinuxInstaller 
+    dest: /tmp/
+    mode: 755
+
+- name: Install SEP Package
+  shell: /tmp/LinuxInstaller
+  when: package_state == "present"
+
+- name: Uninstall SEP Package
+  shell: /tmp/LinuxInstaller -u
+  when: package_state == "absent"
+
+  

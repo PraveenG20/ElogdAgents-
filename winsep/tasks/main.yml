@@ -1,0 +1,11 @@
+---
+# tasks file for winsep
+
+- name: Download Installer
+  win_get_url:
+    url: https://storage.googleapis.com/binaries2/setup64.exe
+    dest: C:\Users\Public\Downloads
+
+- name: Installer
+  win_command: C:\Users\Public\Downloads\setup64.exe /S
+

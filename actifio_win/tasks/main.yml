@@ -1,0 +1,19 @@
+---
+# tasks file for Actifio
+
+- name: Set service startup mode to auto and ensure it is started
+  win_service:
+    name: MSiSCSI
+    start_mode: auto
+    state: started
+
+#- name: Download Connecter .exe
+#  win_get_url:
+#    url: https://storage.googleapis.com/binaries2/connector.exe
+#    dest: c:\
+        
+- name: install connector
+  win_package: 
+    path: https://storage.googleapis.com/binaries2/connector.exe
+    product_id: actifio
+    arguments: /VERYSILENT /NORESTART /SUPPRESSMSGBOXES
